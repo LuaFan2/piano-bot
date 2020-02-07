@@ -12,6 +12,8 @@ import mido
 
 
 def key(s):
+    if s < 0:
+        return key(s + 35)
     if s == 1:
         return "1"
     elif s == 2:
@@ -203,8 +205,8 @@ def readScenario():
                 if msg.type == "note_on":
                     note = key(msg.note - 35)
                     if note:
-                        press(note, 0.005)
-                        time.sleep(0.01)
+                        press(note, 0.02)
+                        time.sleep(msg.time / 1000)
 ##
 
 
