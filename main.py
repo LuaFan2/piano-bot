@@ -202,11 +202,13 @@ def readScenario():
         mid = mido.MidiFile(name)
         for track in mid.tracks:
             for msg in track:
+                print(msg)
                 if msg.type == "note_on":
                     note = key(msg.note - 35)
                     if note:
                         press(note, 0.02)
-                        time.sleep(msg.time / 1000)
+                        time.sleep(0.05)
+                        #time.sleep(msg.time / 1000)
 ##
 
 
